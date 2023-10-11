@@ -17,7 +17,6 @@ class TaskView{
     }
 
     function showtaskAdmin($task){
-        // esto es modelo $tasks = getProductList();
          echo '<ul class="listaAdmin">';
          foreach ($tasks as $task) {
              echo '<li class="listaAdminItems">';
