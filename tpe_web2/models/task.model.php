@@ -13,5 +13,29 @@ class Taskmodel{
     
         return $tasks;
     }
+    function addProduct (){
+        $nombre = $_POST['nombre'];
+        $genero = $_POST['genero'];
+        $precio = $_POST['precio'];
+        $id = insertProduct($nombre, $genero, $precio);
+
+        if ($id){
+            showPanel();
+        } 
+        else {
+            echo 'Error';
+        }   
+    }
+    function insertProduct($nombre, $genero, $precio){
+        $db = getConnection();
+        $action = $db -> prepare('INSERT INTO productos (nombre, id_genero, precio) VALUES (?, ?, ?)');
+        $action -> execute([$nombre, $genero, $precio]);
     
+        return $db->lastInsertId();
+    }
+    
+        function deletetask($id){
+            $query = $this->db->prepare('DELETE FROM productos WHERE id = ?');
+        }
+
 }

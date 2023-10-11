@@ -6,25 +6,29 @@ class TaskController{
     private $models;
     private $views;
     
+    function __construct(){
+        $this->models = new Taskmodel();
+        $this->views =  new TaskView();
+        
+    }
+    
+    function showTasks (){
+        //obtiene las tareas del modelo
+        $tasks = $this->model->getProductList();
+        
+        $this->views->showTasks($tasks);
+    }
+    function showTasksAdmin() {
+        $tasks = $this->model->getProductList();
+        $this->views->showTasks($tasks);
+    }
+    function removeTask($id){
+        $this->model->deleteTask($id);
+        header('Location: ' . BASE_URL);
+    }
+   
 }
 
-function__construct(){
-    $this->models = new Taskmodel();
-    $this->views =  new TaskView();
-    
-}
-
-function showTasks (){
-    //obtiene las tareas del modelo
-    $tasks = $this->model->getProductList();
-    
-    $this->views->showTasks($tasks);
-}
-function showTasksAdmin() {
-    require_once 'tpe_web2/templates/form.task,php';
-    $tasks = $this->model->getProductList();
-    $this->views->showTasks($tasks);
-}
 
 
 ?>

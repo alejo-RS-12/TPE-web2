@@ -18,7 +18,7 @@
             $controller->showHome();
             break;
         case 'tienda':
-            $controller = new TaskController();
+            $controller = new TaskController($tasks);
             showTienda();
             break;
         case 'Login':

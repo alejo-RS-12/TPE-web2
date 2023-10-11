@@ -17,6 +17,7 @@ class TaskView{
     }
 
     function showtaskAdmin($task){
+        require_once 'tpe_web2/templates/form.task,php';
          echo '<ul class="listaAdmin">';
          foreach ($tasks as $task) {
              echo '<li class="listaAdminItems">';
