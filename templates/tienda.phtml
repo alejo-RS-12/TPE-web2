@@ -1,0 +1,16 @@
+<?php require './templates/header.phtml'?>
+
+<ul>
+    <?php foreach ($tasks as $task): ?>
+        <li class="listaAdminItems">
+            <div>
+                <b><?= $task->nombre . ' ' . $task->genero . ' ' . $task->precio ?></b>
+            </div>
+            <div>
+            <a href="TPE-web2/comprar/<?= $task->id ?>" class="btnComprar" type="button">COMPRAR</a>
+            </div>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<?php require './templates/footer.phtml'?>

@@ -1,0 +1,21 @@
+<?php require './templates/header.phtml'?>
+
+<div class="mostrarPaginaProducto">
+    <ul class="listaAdminItems">
+    <?php foreach ($tasks as $task): ?>
+        <li>
+            <div>
+                <b><?= $task->nombre ?> </b>
+                <b><?= $task->descripcion ?></b>
+                <b><?= $task->precio ?> </b>
+                <b><?= $task->genero ?> </b>
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+    <div class="botonconfirmardiv">
+        <a href="TPE-web2/home" class="btnConfirmar" type="button">COMPRAR</a>
+    </div>
+</div>
+
+<?php require './templates/footer.phtml'?>

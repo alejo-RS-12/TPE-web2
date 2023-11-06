@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2023 a las 02:51:07
+-- Tiempo de generación: 06-11-2023 a las 18:26:20
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -53,6 +53,7 @@ INSERT INTO `generos` (`id_genero`, `nombre`) VALUES
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
+  `descripcion` varchar(300) NOT NULL,
   `id_genero` int(45) NOT NULL,
   `precio` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -61,9 +62,29 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id`, `nombre`, `id_genero`, `precio`) VALUES
-(100489, 'minecraft', 5, 42234),
-(100499, 'minecraft', 1, 42234);
+INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `id_genero`, `precio`) VALUES
+(100510, 'minecraft', 'juego de supervivencia de mundo abierto', 5, 12000),
+(100511, 'silent hill ', 'juego de horror en primera persona ', 3, 20000),
+(100512, 'call of duty ', 'juego de guerra en primera persona ', 1, 7000);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `rol` varchar(10) NOT NULL,
+  `rol_id` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`rol`, `rol_id`) VALUES
+('admin', 1),
+('usuario', 0);
 
 -- --------------------------------------------------------
 
@@ -74,7 +95,6 @@ INSERT INTO `productos` (`id`, `nombre`, `id_genero`, `precio`) VALUES
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `usuario` text NOT NULL,
-  `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -82,8 +102,9 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `usuario`, `email`, `password`) VALUES
-(1, 'admin', 'alejo717rua@hotmail.com', 'admin');
+INSERT INTO `usuarios` (`id`, `usuario`, `password`) VALUES
+(0, 'usuario', 'usuario'),
+(1, 'webadmin', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -106,7 +127,8 @@ ALTER TABLE `productos`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `rol_id` (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -122,13 +144,7 @@ ALTER TABLE `generos`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100500;
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100513;
 
 --
 -- Restricciones para tablas volcadas

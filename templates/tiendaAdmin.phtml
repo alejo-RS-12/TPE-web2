@@ -1,0 +1,36 @@
+<?php require_once './templates/header.phtml'?>
+<div class="añadirObjetos">
+    <form action="TPE-web2/agregar" method="POST">
+        <input type="text" placeholder="producto" name="nombre" >
+        <input type="text" placeholder="descripcion" name="descripcion" >
+
+        <select id="valor" name="genero">
+            <option value="1">Accion</option>
+            <option value="2">Lucha</option>
+            <option value="3">Horror</option>
+            <option value="4">Mundo Abierto</option>
+            <option value="5">Aventura</option>
+            <option value="6">Estrategia</option>
+        </select>
+
+
+        <input type="text" name="precio" placeholder="precio">
+
+        <input type="submit" name="enviarformAdm">
+    </form>
+</div>
+<ul class="listaAdmin">
+    <?php foreach ($tasks as $task): ?>
+        <li class="listaAdminItems">
+            <div>
+                <b><?= $task->nombre ?> <?= $task->genero ?> <?= $task->precio ?></b>
+            </div>
+            <div>
+                <a href="TPE-web2/comprar/<?= $task->id ?>" class="btnComprar" type="button">COMPRAR</a>
+                <a href="TPE-web2/eliminar/<?= $task->id ?>" class="btnBorrar" type="button">BORRAR</a>
+            </div>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<?php require_once './templates/footer.phtml'?>
